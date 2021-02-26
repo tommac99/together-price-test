@@ -1,35 +1,30 @@
-import React from "react";
+import { FC } from "react";
 import { makeStyles, Theme } from "@material-ui/core/styles";
 import { UserAvatar } from "../UserAvatar";
 import { Box, Typography } from "@material-ui/core";
 import { FilledIconButton } from "../FilledIconButton";
-import { AccountBox } from "@material-ui/icons";
+import { DataType } from "../../App";
 
-const data = {
-  userId: 1234,
-  fullName: "Gina Snelly",
-  profileImageUrl: "https://randomuser.me/api/portraits/women/55.jpg",
-  trust: 75,
+type SearchContactCardPropsType = {
+  data: DataType;
 };
 
-export const SearchContactCard = () => {
+export const SearchContactCard: FC<SearchContactCardPropsType> = ({
+  data: { fullName, profileImageUrl, trust },
+}) => {
   const classes = useStyles();
 
   return (
     <Box width={362} height={122}>
       <Box className={classes.top}>
         <Box className={classes.userAvatar}>
-          <UserAvatar
-            fullName={data.fullName}
-            url={data.profileImageUrl}
-            trust={data.trust}
-          />
+          <UserAvatar fullName={fullName} url={profileImageUrl} trust={trust} />
         </Box>
         <Box className={classes.button}>
           <FilledIconButton />
         </Box>
         <Box className={classes.topTextBox}>
-          <Typography variant="h1">{data.fullName}</Typography>
+          <Typography variant="h1">{fullName}</Typography>
           <Box height={5} />
           <Typography variant="subtitle1" className={classes.subtitleGray}>
             nessuna connessione

@@ -25,15 +25,8 @@ export const theme = createMuiTheme({
     primary: {
       main: "#6A3EEA",
     },
-    secondary: {
-      main: "#8b4a97",
-    },
     background: {
       default: "#ffffff",
     },
-  },
-  spacing: 10,
-  shape: {
-    borderRadius: 10,
   },
 });

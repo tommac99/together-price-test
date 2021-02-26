@@ -1,6 +1,8 @@
 import { FC } from "react";
 import { Avatar, Typography, CircularProgress } from "@material-ui/core";
 import { makeStyles, Theme } from "@material-ui/core/styles";
+// @ts-ignore
+import { CircleProgress } from "react-gradient-progress";
 
 type UserAvatarPropsType = {
   url: string;
@@ -21,12 +23,21 @@ export const UserAvatar: FC<UserAvatarPropsType> = ({
         <Typography variant="body1">{trust}</Typography>
       </div>
       <Avatar alt={fullName} src={url} className={classes.avatar} />
-      <CircularProgress
+      {/* <CircularProgress
         variant="determinate"
         value={trust}
         className={classes.circle}
         size={89}
-      />
+      /> */}
+      <div className={classes.progress}>
+        <CircleProgress
+          width={112}
+          percentage={trust}
+          strokeWidth={8}
+          primaryColor={["#FA5D75", "#7864F6"]}
+          fontSize={"0px"}
+        />
+      </div>
     </div>
   );
 };
@@ -63,9 +74,9 @@ const useStyles = makeStyles((theme: Theme) => ({
     width: 76,
     height: 76,
   },
-  circle: {
-    "& svg": {
-      fill: "red",
-    },
+  progress: {
+    position: "absolute",
+    top: -13,
+    left: -13,
   },
 }));
